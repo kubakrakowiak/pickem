@@ -80,54 +80,61 @@ export default function GameBar(props) {
             <Modal show={modalMatchId} onClose={closeModal}>
                 <form onSubmit={setBet} className="p-6">
                     <h2 className="text-lg font-medium text-gray-100 dark:text-gray-100">
-                        Are you sure your want to delete your account?
+                        Betting system
                     </h2>
+                    <h4 className="text-gray-500 dark:text-gray-100">
+                        {props.game['team_home']['name']} - {props.game['team_away']['name']}
+                    </h4>
 
                     <p className="mt-1 text-sm text-gray-400 dark:text-gray-400">
-                        Once your account is deleted, all of its resources and data will be permanently deleted. Please
-                        enter your password to confirm you would like to permanently delete your account.
+                        Once your bet is submitted, you can not edit it at v0.1.6. Please
+                        bet only if you re sure its your final decision.
                     </p>
+                    <div className="flex justify-center">
 
-                    <div className="mt-6">
-                        <InputLabel for="team_home_goals" value="Away" className="sr-only" />
+                        <div className="mt-6">
+                            <InputLabel for="team_home_goals" value="Away" className="sr-only" />
 
-                        <TextInput
-                            id="team_home_goals"
-                            type="number"
-                            name="team_home_goals"
-                            ref={teamHomeGoalsInput}
-                            value={data.team_home_score}
-                            handleChange={(e) => setData('team_home_score', e.target.value)}
-                            className="mt-1 block w-3/4"
-                            placeholder="0"
-                        />
+                            <TextInput
+                                id="team_home_goals"
+                                type="number"
+                                name="team_home_goals"
+                                ref={teamHomeGoalsInput}
+                                value={data.team_home_score}
+                                handleChange={(e) => setData('team_home_score', e.target.value)}
+                                className="mt-1 block w-3/4"
+                                placeholder="0"
+                                min="0"
+                            />
 
-                        <InputError message={errors.team_home_score} className="mt-2" />
-                    </div>
+                            <InputError message={errors.team_home_score} className="mt-2" />
+                        </div>
 
-                    <div className="mt-6">
-                        <InputLabel for="team_away_goals" value="Away" className="sr-only" />
+                        <div className="mt-6">
+                            <InputLabel for="team_away_goals" value="Away" className="sr-only" />
 
-                        <TextInput
-                            id="team_away_goals"
-                            type="number"
-                            name="team_away_goals"
-                            ref={teamAwayGoalsInput}
-                            value={data.team_away_score}
-                            handleChange={(e) => setData('team_away_score', e.target.value)}
-                            className="mt-1 block w-3/4"
-                            placeholder="0"
-                        />
+                            <TextInput
+                                id="team_away_goals"
+                                type="number"
+                                name="team_away_goals"
+                                ref={teamAwayGoalsInput}
+                                value={data.team_away_score}
+                                handleChange={(e) => setData('team_away_score', e.target.value)}
+                                className="mt-1 block w-3/4"
+                                placeholder="0"
+                                min="0"
+                            />
 
-                        <InputError message={errors.team_away_score} className="mt-2" />
+                            <InputError message={errors.team_away_score} className="mt-2" />
+                        </div>
                     </div>
 
                     <div className="mt-6 flex justify-end">
                         <SecondaryButton onClick={closeModal}>Cancel</SecondaryButton>
 
-                        <DangerButton className="ml-3" processing={processing}>
-                            Delete Account
-                        </DangerButton>
+                        <PrimaryButton className="ml-3" processing={processing}>
+                            Place Bet
+                        </PrimaryButton>
                     </div>
                 </form>
             </Modal>

@@ -28,7 +28,11 @@ class BetController extends Controller
         $isBetPlaced = Bet::where('game_id', '=', $game['id'])->where('user_id', '=', $user_id)->get();
         $date = Carbon::now()->format('Y-m-d H:i:s');;
         $starting_date = Carbon::createFromFormat('Y-m-d H:i:s', $game['starting_date'])->format('Y-m-d H:i:s');
-        if (count($isBetPlaced) <= 0 && $starting_date > $date){
+        if (count($isBetPlaced) <= 0 &&
+            $starting_date > $date &&
+            $request->input('team_home_score') >= 0 &&
+            $request->input('team_away_score') >= 0)
+        {
             $bet = Bet::create([
                 'team_home_goals' => $request->input('team_home_score'),
                 'team_away_goals' => $request->input('team_away_score'),
