@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BetController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/team', [TeamController::class, 'index'])->name('team.index');
     Route::get('/game', [GameController::class, 'index'])->name('game.index');
     Route::get('/group', [GroupController::class, 'index'])->name('group.index');
+    Route::get('/leaderboard', [BetController::class, 'leaderboard'])->name('leaderboard.index');
+    Route::post('/bet/set', [BetController::class, 'set'])->name('bet.set');
 
 });
 
