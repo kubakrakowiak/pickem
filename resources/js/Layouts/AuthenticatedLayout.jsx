@@ -107,6 +107,18 @@ export default function Authenticated({ auth, header, children }) {
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('team.index')} active={route().current('team.index')}>
+                            Teams
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('game.index')} active={route().current('game.index')}>
+                            Matches
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('group.index')} active={route().current('group.index')}>
+                            Groups
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('leaderboard.index')} active={route().current('leaderboard.index')}>
+                            Leaderboard
+                        </ResponsiveNavLink>
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
