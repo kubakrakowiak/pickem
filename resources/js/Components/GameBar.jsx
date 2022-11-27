@@ -59,9 +59,9 @@ export default function GameBar(props) {
                             {props.game['team_home']['name']}
                         </div>
                         {props.game['isBetPlaced'] || props.game['started'] ?
-                            <div className="rounded-lg border border-indigo-600 p-4 my-2 w-48text-gray-100 dark:text-gray-100 flex flex-col justify-center">
+                            <div className="rounded-lg border border-indigo-600 p-4 my-2 text-gray-100 dark:text-gray-100 flex flex-col justify-center">
                                 <div className="text-xs justify-center">
-                                        {Moment(props.game['starting_date']).format('D MMM hh:mm')}
+                                        {Moment(props.game['starting_date']).format('D MMM HH:mm')}
                                 </div>
                                 <div className="text-center justify-center flex">
                                     <div className="text-xs px-2">
@@ -76,8 +76,10 @@ export default function GameBar(props) {
                                 </div>
                             </div>
                             :
-                            <div onClick={changeModalMatchId} className="p-6 text-gray-100 dark:text-gray-100 flex">
-                                <PrimaryButton>Place Bet</PrimaryButton>
+                            <div className="flex flex-col justify-center">
+                                <div onClick={changeModalMatchId} className="p-6 text-gray-100 dark:text-gray-100 flex">
+                                    <PrimaryButton>Place Bet <br/>{Moment(props.game['starting_date']).format('D MMM HH:mm')}</PrimaryButton>
+                                </div>
                             </div>
                         }
                         <div className="text-right p-6 text-gray-100 dark:text-gray-100 w-36">
