@@ -6,7 +6,6 @@ use App\Models\Bet;
 use App\Models\Game;
 use App\Models\User;
 use Carbon\Carbon;
-use http\Env\Response;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -58,14 +57,16 @@ class BetController extends Controller
         }
         $sortedUsers = $users->sortByDesc('score');
         $pos = 1;
+        $resultLeaderboard = [];
         foreach ($sortedUsers as $sortedUser){
             $sortedUser['rank'] = $pos;
+            $resultLeaderboard[$pos] = $sortedUser;
             $pos++;
         }
 
 
         return Inertia::render('Leaderboard/Index', [
-            'users' => $sortedUsers,
+            'users' => $resultLeaderboard,
         ]);
     }
 }
