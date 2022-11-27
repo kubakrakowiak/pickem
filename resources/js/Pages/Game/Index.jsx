@@ -33,12 +33,18 @@ export default function Index({ auth, games}) {
             {_.map(games, function(value) {
                 var d1 = new Date();
                 var d2 = new Date(value['starting_date']);
-                if (d1 < d2){
+                if (/constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification)))
+                {
                     return <GameBar game={value}/>
                 }
-                else{
-                    if (showPastMatches){
+                else {
+                    if (d1 < d2){
                         return <GameBar game={value}/>
+                    }
+                    else{
+                        if (showPastMatches){
+                            return <GameBar game={value}/>
+                        }
                     }
                 }
             })}
