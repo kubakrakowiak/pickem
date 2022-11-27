@@ -65,13 +65,13 @@ export default function GameBar(props) {
                                 </div>
                                 <div className="text-center justify-center flex">
                                     <div className="text-xs px-2">
-                                        { props.game['isBetPlaced'] ? '('+props.game['bet']['team_home_goals']+')' : ''}
+                                        { props.game['isBetPlaced'] && props.game['bet'] ? '('+props.game['bet']['team_home_goals']+')' : ''}
                                     </div>
                                         {props.game['team_home_goals'] !== null ? props.game['team_home_goals'] : '-'}
                                     :
                                         {props.game['team_away_goals'] !== null ? props.game['team_away_goals'] : '-'}
                                     <div className="text-xs px-2">
-                                        { props.game['isBetPlaced'] ? '('+props.game['bet']['team_away_goals']+')' : ''}
+                                        { props.game['isBetPlaced'] && props.game['bet'] ? '('+props.game['bet']['team_away_goals']+')' : ''}
                                     </div>
                                 </div>
                             </div>

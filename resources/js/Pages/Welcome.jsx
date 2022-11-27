@@ -119,7 +119,7 @@ export default function Welcome(props) {
                         </div>
                         <div className="text-center text-sm text-gray-500 sm:text-left">
                             <div className="flex items-center">
-                                v0.2.2
+                                v0.2.3
                             </div>
                         </div>
                     </div>
