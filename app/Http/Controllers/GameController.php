@@ -23,6 +23,9 @@ class GameController extends Controller
         foreach ($games as $game){
             $starting_date = Carbon::createFromFormat('Y-m-d H:i:s', $game['starting_date'])->format('Y-m-d H:i:s');
             $game['isBetPlaced'] = count(Bet::where('game_id', '=', $game['id'])->where('user_id', '=', Auth::user()['id'])->get()) > 0;
+            if ($game['isBetPlaced']){
+                $game['bet'] = Bet::where('game_id', '=', $game['id'])->where('user_id', '=', Auth::user()['id'])->first();
+            }
             $game['started'] = $starting_date < $date;
         }
 

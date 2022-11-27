@@ -8,6 +8,8 @@ import InputError from "@/Components/InputError";
 import SecondaryButton from "@/Components/SecondaryButton";
 import DangerButton from "@/Components/DangerButton";
 import PrimaryButton from "@/Components/PrimaryButton";
+import Moment from 'moment';
+
 
 export default function GameBar(props) {
     const [modalMatchId, setModalMatchId] = useState(false);
@@ -57,13 +59,20 @@ export default function GameBar(props) {
                             {props.game['team_home']['name']}
                         </div>
                         {props.game['isBetPlaced'] || props.game['started'] ?
-                            <div className="p-6 text-gray-100 dark:text-gray-100 flex">
-                                <div className="rounded-lg border w-6 text-center border-indigo-600 mx-2">
-                                    {props.game['team_home_goals'] !== null ? props.game['team_home_goals'] : '-'}
+                            <div className="rounded-lg border border-indigo-600 p-4 my-2 w-48text-gray-100 dark:text-gray-100 flex flex-col justify-center">
+                                <div className="text-xs justify-center">
+                                        {Moment(props.game['starting_date']).format('D MMM hh:mm')}
                                 </div>
-                                :
-                                <div className="rounded-lg border w-6 text-center border-indigo-600 mx-2">
-                                    {props.game['team_away_goals'] !== null ? props.game['team_away_goals'] : '-'}
+                                <div className="text-center justify-center flex">
+                                    <div className="text-xs px-2">
+                                        { props.game['isBetPlaced'] ? '('+props.game['bet']['team_home_goals']+')' : ''}
+                                    </div>
+                                        {props.game['team_home_goals'] !== null ? props.game['team_home_goals'] : '-'}
+                                    :
+                                        {props.game['team_away_goals'] !== null ? props.game['team_away_goals'] : '-'}
+                                    <div className="text-xs px-2">
+                                        { props.game['isBetPlaced'] ? '('+props.game['bet']['team_away_goals']+')' : ''}
+                                    </div>
                                 </div>
                             </div>
                             :
