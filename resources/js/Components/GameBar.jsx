@@ -98,7 +98,7 @@ export default function GameBar(props) {
                     </h4>
 
                     <p className="mt-1 text-sm text-gray-400 dark:text-gray-400">
-                        Once your bet is submitted, you can not edit it at v0.1.6. Please
+                        Once your bet is submitted, you can not edit it at current version. Please
                         bet only if you re sure its your final decision.
                     </p>
                     <div className="flex justify-center">
