@@ -49,7 +49,7 @@ class BetController extends Controller
         foreach ($users as $user){
             $counter = 0;
             foreach ($user->bets as $bet){
-                if ($bet['team_home_goals'] == $bet->game['team_home_goals'] && $bet['team_away_goals'] == $bet->game['team_away_goals']){
+                if ($bet['team_home_goals'] === $bet->game['team_home_goals'] && $bet['team_away_goals'] === $bet->game['team_away_goals']){
                     $counter++;
                 }
             }
