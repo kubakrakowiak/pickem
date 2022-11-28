@@ -104,7 +104,7 @@ export default function GameBar(props) {
                     <div className="flex justify-center">
 
                         <div className="mt-6">
-                            <InputLabel for="team_home_goals" value="Away" className="sr-only" />
+                            <InputLabel for="team_home_goals" value={props.game['team_home']['name']} />
 
                             <TextInput
                                 id="team_home_goals"
@@ -122,7 +122,7 @@ export default function GameBar(props) {
                         </div>
 
                         <div className="mt-6">
-                            <InputLabel for="team_away_goals" value="Away" className="sr-only" />
+                            <InputLabel for="team_away_goals" value={props.game['team_away']['name']} />
 
                             <TextInput
                                 id="team_away_goals"
